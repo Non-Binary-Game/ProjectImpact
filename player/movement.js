@@ -1,4 +1,5 @@
  function handlePlayerMovement(player, cursors) {
+    //defines controls
     const { left, right, up } = cursors;
 
     if (left.isDown) {
