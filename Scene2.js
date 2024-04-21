@@ -1,3 +1,4 @@
+
 var Scene2 = new Phaser.Class({
 
     Extends: Phaser.Scene,
@@ -46,56 +47,8 @@ var Scene2 = new Phaser.Class({
         this.physics.add.collider(player, terrain, null, this);
     },
 
-    /*update: function () {
-
-        const { left, right, up } = this.cursors;
-
-        if (left.isDown)
-        {
-            this.player.setVelocityX(-160);
-
-        }
-        else if (right.isDown)
-        {
-            this.player.setVelocityX(160);
-        }
-        /*
-        else
-        {
-            this.player.setVelocityX(0);
-
-        }*/
-
-        /*if (up.isDown && this.player.body.touching.down)
-        {
-            this.player.setVelocityY(-330);
-        }
-    
-
-
-    }*/
 
     update: function () {
-        const { left, right, up } = cursors; // Use the defined 'cursors'
-    
-        if (left.isDown) {
-            player.setVelocityX(-160); // Use 'player' directly
-        }
-        
-        else if (right.isDown) {
-            player.setVelocityX(160); // Use 'player' directly
-        }
-        
-        else if (up.isDown) {
-            player.setVelocityY(-160); // Use 'player' directly
-        }
-        
-        else {
-            player.setVelocityX(0); // Use 'player' directly
-        }
-    
-        if (up.isDown && player.body.touching.down) { // Use 'player' directly
-            player.setVelocityY(-330); // Use 'player' directly
-        }
+        handlePlayerMovement(player, cursors);
     }
 });
