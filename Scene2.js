@@ -13,7 +13,6 @@ var Scene2 = new Phaser.Class({
     preload: function () {
         //passes in scene data to load assets
         loadGlobalAssets(this);
-        
     },
 
     create: function () {
