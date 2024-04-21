@@ -11,11 +11,9 @@ var Scene2 = new Phaser.Class({
         },
 
     preload: function () {
-        // Load assets needed for scene2
-
-        // this.load.image('terrain', 'assets/terrain.png');   
-        this.load.image('player', 'assets/globalAssets/player.png');
-        //   globalAssetLoader();
+        //passes in scene data to load assets
+        loadGlobalAssets(this);
+        
     },
 
     create: function () {
