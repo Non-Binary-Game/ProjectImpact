@@ -12,8 +12,9 @@ var Scene2 = new Phaser.Class({
     preload: function ()
     {
         // Load assets needed for scene2
-        this.load.image('player', 'assets/player.png');
+       
         this.load.image('terrain', 'assets/terrain.png');
+        this.load.image('player', 'assets/player.png');
     },
 
     create: function ()
