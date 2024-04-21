@@ -4,30 +4,33 @@ var Scene2 = new Phaser.Class({
 
     initialize:
 
-    function Scene2 ()
-    {
-        Phaser.Scene.call(this, { key: 'Scene2' });
-    },
+        function Scene2() {
+            Phaser.Scene.call(this, {
+                key: 'Scene2'
+            });
+        },
 
-    preload: function ()
-    {
+    preload: function () {
         // Load assets needed for scene2
-        this.load.image('player', 'assets/player.png');
-        this.load.image('terrain', 'assets/terrain.png');
+
+        // this.load.image('terrain', 'assets/terrain.png');   
+        this.load.image('player', 'assets/globalAssets/player.png');
+        //   globalAssetLoader();
     },
 
-    create: function ()
-    {
+    create: function () {
         // Add any initialization code for scene2
 
-        player = this.physics.add.sprite(100, 450, 'player');
+        player = this.physics.add.sprite(100, 100, 'player');
         cursors = this.input.keyboard.createCursorKeys();
 
         // Create the terrain grid
         terrain = this.physics.add.group({
             key: 'terrain',
-            repeat: 79,
-            setXY: { x: 0, y: 500, stepX: 10 }
+            setXY: {
+                x: 0,
+                y: 500,
+            }
         });
 
         this.physics.world.setBounds(0, 0, this.cameras.main.width, this.cameras.main.height);
@@ -41,12 +44,12 @@ var Scene2 = new Phaser.Class({
         });
 
 
-        this.physics.add.collider(player, terrain, destroyCell, null, this);
+        this.physics.add.collider(player, terrain, null, this);
     },
 
-    update: function ()
-    {
-        // Add any update logic for scene2
-        // Player movement, collision detection, etc.
+
+    update: function () {
+        //Handles basic movements functionality
+        handlePlayerMovement(player, cursors);
     }
 });
