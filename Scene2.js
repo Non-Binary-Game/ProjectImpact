@@ -49,5 +49,7 @@ var Scene2 = new Phaser.Class({
     update: function () {
         //Handles basic movements functionality
         handlePlayerMovement(player, cursors);
+        //handle double tap?
+        handleDoubleTap(player, cursors);
     }
 });
