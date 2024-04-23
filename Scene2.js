@@ -6,6 +6,7 @@ var Scene2 = new Phaser.Class({
         Phaser.Scene.call(this, {
             key: 'Scene2'
         });
+        this.playerWasInAir = false; // Initialize playerWasInAir flag
     },
 
     player: null, //player object
@@ -18,23 +19,29 @@ var Scene2 = new Phaser.Class({
 
     create: function () {
         // Add any initialization code for scene2
-
+    
         this.player = this.physics.add.sprite(100, 100, 'player');
         cursors = this.input.keyboard.createCursorKeys();
-        this.terrain = this.physics.add.image(250, 400   , 'terrain');
+    
+        this.terrain = this.physics.add.image(250, 400, 'terrain');
         this.terrain.setImmovable(true);
         this.terrain.body.allowGravity = false;
-        // this.terrain.setVelocityX(50);
-
+    
         this.physics.add.collider(this.player, this.terrain);
-
-        this.player.setBounce(0.2);
         this.player.setCollideWorldBounds(true);
+    
+        this.cam = this.cameras.main;
+    
+        // Make the camera follow the player
+        this.cam.startFollow(this.player);
+    
+        // Pass necessary information to movement module
+        movementModule.init(this.player, cursors, this);
     },
 
 
     update: function () {
         //Handles basic movements functionality
-        handlePlayerMovement(this.player, cursors);
+        movementModule.handlePlayerMovement();
     }
 });
