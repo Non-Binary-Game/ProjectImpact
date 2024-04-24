@@ -12,10 +12,13 @@ var Scene2 = new Phaser.Class({
     player: null, //player object
 
     preload: function () {
+        
         //passes in scene data to load assets
         loadGlobalAssets(this);
         this.load.image('terrain', 'assets/terrain.png');
         this.load.image('background', 'assets/BG2.png');
+        //load animations
+ 
     },
 
     create: function () {
@@ -62,8 +65,13 @@ var Scene2 = new Phaser.Class({
         // Make the camera follow the player
         this.cam.startFollow(this.player);
     
+        //playeranimations
+        playerAnimations(this);
+
         // Pass necessary information to movement module
         movementModule.init(this.player, cursors, this);
+
+
     },
 
 

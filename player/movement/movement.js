@@ -24,6 +24,7 @@ var movementModule = (function() {
             if (!player.body.touching.down && down.isDown) {
                 player.setVelocityX(500); // Increase horizontal speed mid-air when charging downwards
             }
+            scene.player.anims.play('right', true);
         }
         else {
             player.setVelocityX(0);
