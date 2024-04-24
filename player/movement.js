@@ -12,7 +12,8 @@ var movementModule = (function() {
     function handlePlayerMovement() {
         //defines controls
         const { left, right, up, down } = cursors;
-    
+
+        // Check if the player can move horizontally
         if (left.isDown) {
             player.setVelocityX(-160);
             if (!player.body.touching.down && down.isDown) {
@@ -28,22 +29,22 @@ var movementModule = (function() {
         else {
             player.setVelocityX(0);
         }
-    
+
+        // Check if the player can move vertically
         if (up.isDown && player.body.touching.down) {
             player.setVelocityY(-330);
         }
-    
         if (down.isDown && !player.body.touching.down) {
             player.setVelocityY(500); // Charge downwards while in mid-air
         }
-    
+
         // Check if the player has landed after pressing down in mid-air
         if (player.body.touching.down && scene.playerWasInAir && down.isDown) {
-            // Trigger ground shake or screen shake
-            scene.cameras.main.shake(250, .01); // Adjust shake parameters as needed
+            // Trigger screen shake if conditions are met
+            screenshakeModule.triggerScreenShake(scene);
             scene.playerWasInAir = false; // Reset flag
         }
-    
+
         // Update the flag to track if the player was in the air
         if (!player.body.touching.down) {
             scene.playerWasInAir = true;
