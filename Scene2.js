@@ -28,6 +28,7 @@ var Scene2 = new Phaser.Class({
 
         
         platforms(this, 100, 400)
+        platforms(this, 0, 450)
         platforms(this, 250, 400)
         platforms(this, 350, 300)
         platforms(this, 450, 200)
