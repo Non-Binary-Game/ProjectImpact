@@ -25,37 +25,17 @@ var Scene2 = new Phaser.Class({
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         
-    
-        this.terrain = this.physics.add.image(250, 400, 'terrain');
-        this.terrain1 = this.physics.add.image(100, 400, 'terrain');
-        this.terrain2 = this.physics.add.image(350, 300, 'terrain');
-        this.terrain3 = this.physics.add.image(450, 200, 'terrain');
-        this.terrain4 = this.physics.add.image(550, 100, 'terrain');
-        this.terrain5 = this.physics.add.image(660, 0, 'terrain');
-        this.terrain6 = this.physics.add.image(800, 200, 'terrain');
 
-
-        this.terrain.setImmovable(true);
-        this.terrain.body.allowGravity = false;
-        this.terrain1.setImmovable(true);
-        this.terrain1.body.allowGravity = false;
-        this.terrain2.setImmovable(true);
-        this.terrain2.body.allowGravity = false;
-        this.terrain3.setImmovable(true);
-        this.terrain3.body.allowGravity = false;
-        this.terrain4.setImmovable(true);
-        this.terrain4.body.allowGravity = false;
-        this.terrain5.setImmovable(true);
-        this.terrain5.body.allowGravity = false;
-        this.terrain6.setImmovable(true);
-        this.terrain6.body.allowGravity = false;
-        this.physics.add.collider(this.player, this.terrain);
-        this.physics.add.collider(this.player, this.terrain1);
-        this.physics.add.collider(this.player, this.terrain2);
-        this.physics.add.collider(this.player, this.terrain3);
-        this.physics.add.collider(this.player, this.terrain4);
-        this.physics.add.collider(this.player, this.terrain5);
-        this.physics.add.collider(this.player, this.terrain6);
+        
+        platforms(this, 100, 400)
+        platforms(this, 250, 400)
+        platforms(this, 350, 300)
+        platforms(this, 450, 200)
+        platforms(this, 550, 100)
+        platforms(this, 660, 0)
+        platforms(this, 800, 200)
+        
+   
         //this.player.setCollideWorldBounds(true);
     
         this.cam = this.cameras.main;
