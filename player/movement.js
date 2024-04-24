@@ -41,7 +41,7 @@ var movementModule = (function() {
         // Check if the player has landed after pressing down in mid-air
         if (player.body.touching.down && scene.playerWasInAir && down.isDown) {
             // Trigger screen shake if conditions are met
-            screenshakeModule.triggerScreenShake(scene);
+            screenShakeModule.triggerScreenShake(scene);
             scene.playerWasInAir = false; // Reset flag
         }
 
