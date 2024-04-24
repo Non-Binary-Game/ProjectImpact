@@ -7,6 +7,7 @@ var Scene2 = new Phaser.Class({
             key: 'Scene2'
         });
         this.playerWasInAir = false; // Initialize playerWasInAir flag
+        this.player = null; // Initialize player object
     },
 
     player: null, //player object
@@ -14,19 +15,20 @@ var Scene2 = new Phaser.Class({
     preload: function () {
         //passes in scene data to load assets
         loadGlobalAssets(this);
-   
+        
 
     },
 
     create: function () {
         // Add any initialization code for scene2
         this.background = this.add.image(100,100, 'background');
-        this.player = this.physics.add.sprite(100, 100, 'player');
+        this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         
 
         
         platforms(this, 100, 400)
+        platforms(this, 0, 450)
         platforms(this, 250, 400)
         platforms(this, 350, 300)
         platforms(this, 450, 200)
@@ -39,8 +41,13 @@ var Scene2 = new Phaser.Class({
     
         this.cam = this.cameras.main;
     
-        // Make the camera follow the player
-        this.cam.startFollow(this.player);
+        
+        if (this.player) {
+            // Start camera follow if the player object is defined
+            this.cameras.main.startFollow(this.player);
+        } else {
+            console.error("Player object is null or undefined.");
+        }
     
         // Pass necessary information to movement module
         movementModule.init(this.player, cursors, this);
@@ -50,5 +57,9 @@ var Scene2 = new Phaser.Class({
     update: function () {
         //Handles basic movements functionality
         movementModule.handlePlayerMovement();
+        if (this.player && this.player.y > this.cameras.main.height) {
+            // Reset the player's position
+            playerModule.resetPlayer();
+        }
     }
 });

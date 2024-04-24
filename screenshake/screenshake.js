@@ -1,4 +1,4 @@
-var screenshakeModule = (function() {
+var screenShakeModule = (function() {
     var lastShakeTime = 0; // Track the time of the last screen shake
     var cooldownDuration = 5000; // Cooldown duration in milliseconds (5 seconds)
     var shakeChance = 0.1; // 10% chance for screen shake
