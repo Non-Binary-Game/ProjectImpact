@@ -18,16 +18,23 @@ var movementModule = (function() {
             if (!player.body.touching.down && down.isDown) {
                 player.setVelocityX(-500); // Increase horizontal speed mid-air when charging downwards
             }
+            //flips player then plays the walk animations
+            scene.player.setFlipX(true);
+            scene.player.anims.play('walk', true);
         } 
         else if (right.isDown) {
             player.setVelocityX(160);
             if (!player.body.touching.down && down.isDown) {
                 player.setVelocityX(500); // Increase horizontal speed mid-air when charging downwards
             }
-            scene.player.anims.play('right', true);
+            //resets the flip and plays the walk animations
+            scene.player.setFlip(false, false);
+            scene.player.anims.play('walk', true);
         }
         else {
+            scene.player.anims.stop('walk',true);
             player.setVelocityX(0);
+            
         }
     
         if (up.isDown && player.body.touching.down) {
