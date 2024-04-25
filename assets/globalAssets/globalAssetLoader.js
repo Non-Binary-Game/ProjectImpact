@@ -16,7 +16,7 @@ function loadGlobalAssets(scene){
    scene.load.image('background', 'assets/BG2.png');
    
    //scene.load.image('player', 'assets/spaeatepngfiles/player/walk/playerwalk1.png');
-   scene.load.spritesheet('player', 'assets/playerspriteSheet/wholeSheet.png', { frameWidth: 32, frameHeight: 32 });
+   scene.load.spritesheet('player', 'assets/playerspriteSheet/playerwalksheet.png', { frameWidth: 32, frameHeight: 32 });
 
    //load into scene animations
 }
