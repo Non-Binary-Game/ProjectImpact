@@ -26,7 +26,7 @@ var Scene2 = new Phaser.Class({
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         
-        bgMusic.play();
+        //bgMusic.play();
         
         platforms(this, 100, 400)
         platforms(this, 0, 450)
