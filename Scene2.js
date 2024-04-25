@@ -22,12 +22,13 @@ var Scene2 = new Phaser.Class({
 
     create: function () {
         // Add any initialization code for scene2
+        bgMusic = this.sound.add('bgMusic', { loop: true, volume: 0.3 });
+        bgMusic.play();   
         this.background = this.add.image(100,100, 'background');
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         this.enemy = EnemyModule.initEnemy(this, 0, 10, 'enemy');
-        bgMusic = this.sound.add('bgMusic', { loop: true, volume: 0.3 });
-        bgMusic.play();        
+     
         
         platforms(this, 100, 400)
         platforms(this, 0, 450)
