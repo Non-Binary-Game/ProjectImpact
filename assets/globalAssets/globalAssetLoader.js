@@ -8,9 +8,8 @@ function loadGlobalAssets(scene){
       depreciated, sprite sheet is loaded over the image. idle animation not yet implemented to switch too.
       */
    //music assets
-   //bgMusic = this.sound.add('bgMusic', { loop: true, volume: 0.5 });
-   //scene.load.audio('bgMusic','assets/globalAssets/sounds/global_sounds/theme_melon_impact.mp3');
-
+   //loads audio assets
+   scene.load.audio('bgMusic','assets/globalAssets/sounds/global_sounds/theme_melon_impact.mp3');
    //physical terrain
    scene.load.image('terrain', 'assets/terrain.png');
    scene.load.image('background', 'assets/BG2.png');

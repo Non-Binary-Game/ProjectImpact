@@ -8,7 +8,6 @@ var Scene2 = new Phaser.Class({
         });
         this.playerWasInAir = false; // Initialize playerWasInAir flag
         this.player = null; // Initialize player object
-        this.bgMusic = null;
     },
 
     player: null, //player object
@@ -25,8 +24,9 @@ var Scene2 = new Phaser.Class({
         this.background = this.add.image(100,100, 'background');
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
-        
-        //bgMusic.play();
+
+        bgMusic = this.sound.add('bgMusic', { loop: true, volume: 0.3 });
+        bgMusic.play();
         
         platforms(this, 100, 400)
         platforms(this, 0, 450)
