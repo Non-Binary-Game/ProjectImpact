@@ -32,7 +32,7 @@ var Scene2 = new Phaser.Class({
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         
-        
+
         
    
         //this.player.setCollideWorldBounds(true);
