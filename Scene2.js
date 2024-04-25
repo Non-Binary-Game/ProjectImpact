@@ -1,23 +1,29 @@
+const movingBlock = new platforms(this);
+const stillblock = new platforms(this);
+
 var Scene2 = new Phaser.Class({
 
     Extends: Phaser.Scene,
-
     initialize: function Scene2() {
         Phaser.Scene.call(this, {
             key: 'Scene2'
         });
         this.playerWasInAir = false; // Initialize playerWasInAir flag
         this.player = null; // Initialize player object
+       
+
+
+        
     },
+    
 
     player: null, //player object
-
     preload: function () {
         //passes in scene data to load assets
         loadGlobalAssets(this);
-        
 
     },
+    
 
     create: function () {
         // Add any initialization code for scene2
@@ -25,16 +31,10 @@ var Scene2 = new Phaser.Class({
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
         
-
         
-        platforms(this, 100, 400)
-        platforms(this, 0, 450)
-        platforms(this, 250, 400)
-        platforms(this, 350, 300)
-        platforms(this, 450, 200)
-        platforms(this, 550, 100)
-        platforms(this, 660, 0)
-        platforms(this, 800, 200)
+        stillblock.placePlatform(100, 400);
+        
+        
         
    
         //this.player.setCollideWorldBounds(true);
@@ -55,6 +55,9 @@ var Scene2 = new Phaser.Class({
 
 
     update: function () {
+        movingBlock.movePlatform(900);
+        
+    
         //Handles basic movements functionality
         movementModule.handlePlayerMovement();
         if (this.player && this.player.y > this.cameras.main.height) {
