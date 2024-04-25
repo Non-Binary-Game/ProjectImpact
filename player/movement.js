@@ -19,15 +19,23 @@ var movementModule = (function() {
             if (!player.body.touching.down && down.isDown) {
                 player.setVelocityX(-500); // Increase horizontal speed mid-air when charging downwards
             }
+                   //flips player then plays the walk animations
+                   scene.player.setFlipX(true);
+                   scene.player.anims.play('walk', true);
         } 
         else if (right.isDown) {
             player.setVelocityX(160);
             if (!player.body.touching.down && down.isDown) {
                 player.setVelocityX(500); // Increase horizontal speed mid-air when charging downwards
             }
+                    //resets the flip and plays the walk animations
+                    scene.player.setFlip(false, false);
+                    scene.player.anims.play('walk', true);
         }
         else {
             player.setVelocityX(0);
+            //this stops the animation then reverts to the first frame in the sprite sheet when set true, false just ends it on that frame
+            scene.player.anims.stop('walk',true);
         }
 
         // Check if the player can move vertically

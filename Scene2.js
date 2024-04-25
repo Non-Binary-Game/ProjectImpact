@@ -52,7 +52,8 @@ var Scene2 = new Phaser.Class({
         } else {
             console.error("Player object is null or undefined.");
         }
-    
+        //animation handler, passes in scene to animation handler
+        playerAnimations(this);
         // Pass necessary information to movement module
         movementModule.init(this.player, cursors, this);
     },
