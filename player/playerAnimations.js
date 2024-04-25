@@ -11,14 +11,26 @@ const playerAnimations =(Scene) =>{
         repeat: -1
     });
     
-    /*
+    
     //other animations go here
     Scene.anims.create({
-        key: 'key',
-        frames: Scene.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+        key: 'jump',
+        frames: Scene.anims.generateFrameNumbers('player', { start: 4, end: 7 }),
         frameRate: 9,
-        repeat: -1
+        repeat: 0
     });
-    */
+    
+    Scene.anims.create({
+        key: 'playerSlam',
+        frames: Scene.anims.generateFrameNumbers('player', { start: 13, end: 17 }),
+        frameRate: 9,
+        repeat: 1
+    });
 
+    Scene.anims.create({
+        key: 'playerDead',
+        frames: Scene.anims.generateFrameNumbers('player', { start: 19, end: 23 }),
+        frameRate: 9,
+        repeat: 1
+    });
 };
