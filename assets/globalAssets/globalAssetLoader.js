@@ -12,6 +12,10 @@ function loadGlobalAssets(scene){
    scene.load.image('background', 'assets/BG2.png');
    //scene.load.image('player', 'assets/spaeatepngfiles/player/walk/playerwalk1.png');
    scene.load.spritesheet('player', 'assets/playerspriteSheet/playerwalksheet.png', { frameWidth: 32, frameHeight: 32 });
+   
+   stillblock = new platforms(scene);
+   stillblock1 = new platforms(scene);
+
 
    //load into scene animations
 }

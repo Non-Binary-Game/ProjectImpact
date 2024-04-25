@@ -1,5 +1,5 @@
-const movingBlock = new platforms(this);
-const stillblock = new platforms(this);
+// const movingBlock = new platforms(this);
+// const stillblock = new platforms(this);
 
 var Scene2 = new Phaser.Class({
 
@@ -10,9 +10,8 @@ var Scene2 = new Phaser.Class({
         });
         this.playerWasInAir = false; // Initialize playerWasInAir flag
         this.player = null; // Initialize player object
-       
-
-
+        this.stillblock = null;
+        this.stillblock1 = null;
         
     },
     
@@ -26,13 +25,12 @@ var Scene2 = new Phaser.Class({
     
 
     create: function () {
+    
+
         // Add any initialization code for scene2
         this.background = this.add.image(100,100, 'background');
         this.player = playerModule.initPlayer(this);
         cursors = this.input.keyboard.createCursorKeys();
-        
-        
-        stillblock.placePlatform(100, 400);
         
         
         
@@ -52,13 +50,18 @@ var Scene2 = new Phaser.Class({
         playerAnimations(this);
         // Pass necessary information to movement module
         movementModule.init(this.player, cursors, this);
+        
+        stillblock.placePlatform(300, 200, false);
+  
+
     },
 
-
+      
     update: function () {
-        movingBlock.movePlatform(900);
-        
     
+        stillblock1.placePlatform(200, 300, true);
+
+
         //Handles basic movements functionality
         movementModule.handlePlayerMovement();
         if (this.player && this.player.y > this.cameras.main.height) {

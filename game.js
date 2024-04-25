@@ -9,6 +9,7 @@ var config = {
             debug: false
         }
     },
+    
     scene: [Scene1, Scene2] // Register your scenes here
 };
 

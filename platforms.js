@@ -2,18 +2,23 @@ class platforms {
 
     constructor(baseObject) {
         this.baseObject = baseObject;
+        
+        this.x = null;
+        this.y = null;
     
     }
+    
+   
+    
 
-
-    placePlatform(x, y) {
+    placePlatform(x, y, movingPlatform) {
         const parms = {
             key: 'terrain',
-            CannotMove: true,
+            CannotMove: false,
             HasGravity: false
         }
         
-        this.baseObject.terrain = this.baseObject.physics.add.image(x, y, parms.key);
+        this.baseObject.terrain = this.baseObject.physics.add.image(this.x, y, parms.key);
         
         this.baseObject.terrain.setImmovable(parms.CannotMove);
         
@@ -21,22 +26,15 @@ class platforms {
         
         this.baseObject.physics.add.collider(this.baseObject.player, this.baseObject.terrain);
     
-    }
-    
-    movePlatform(x) {
-        const parms = {
-            key: 'terrain',
-            CannotMove: true,
-            HasGravity: false
+        if(movingPlatform == true){
+            this.movePlatform()
         }
-        
-        this.baseObject.terrain = this.baseObject.physics.add.image(x, 400, parms.key);
-        this.baseObject.terrain.setImmovable(parms.CannotMove);
-        this.baseObject.terrain.body.allowGravity = parms.HasGravity;
-        this.baseObject.physics.add.collider(this.baseObject.player, this.baseObject.terrain);
-    
     }
     
+    movePlatform() {
+        this.x++;
+        console.log(this.x);
+    }
      
 
 }
