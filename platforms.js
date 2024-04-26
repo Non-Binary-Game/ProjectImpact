@@ -13,6 +13,6 @@ function platforms(baseObject, x, y) {
     
     baseObject.physics.add.collider(baseObject.player, baseObject.terrain);
 
-    baseObject.physics.add.collider(baseObject.enemy, baseObject.terrain);
+
 
 }

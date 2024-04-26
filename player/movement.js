@@ -10,63 +10,55 @@ var movementModule = (function() {
     }
 
     function handlePlayerMovement() {
-        // Defines controls
+        //defines controls
         const { left, right, up, down } = cursors;
-    
-        // Initialize velocities
-        let horizontalVelocity = 0;
-        let verticalVelocity = player.body.velocity.y; // Maintain current vertical velocity
-    
-        // Check if left arrow key is pressed
+
+        // Check if the player can move horizontally
         if (left.isDown) {
-            horizontalVelocity = -160; // Set negative horizontal velocity for left movement
-            scene.player.setFlipX(true); // Flip player sprite horizontally
+            player.setVelocityX(-160);
+            if (!player.body.touching.down && down.isDown) {
+                player.setVelocityX(-500); // Increase horizontal speed mid-air when charging downwards
+            }
+                   //flips player then plays the walk animations
+                   scene.player.setFlipX(true);
+                   scene.player.anims.play('walk', true);
+        } 
+        else if (right.isDown) {
+            player.setVelocityX(160);
+            if (!player.body.touching.down && down.isDown) {
+                player.setVelocityX(500); // Increase horizontal speed mid-air when charging downwards
+            }
+                    //resets the flip and plays the walk animations
+                    scene.player.setFlip(false, false);
+                    scene.player.anims.play('walk', true);
         }
-        // Check if right arrow key is pressed
-        if (right.isDown) {
-            horizontalVelocity = 160; // Set positive horizontal velocity for right movement
-            scene.player.setFlipX(false); // Reset player sprite flip
-        }
-    
-        // Check if up arrow key is pressed and player is on the ground
-        if (up.isDown && player.body.touching.down) {
-            verticalVelocity = -300; // Set negative vertical velocity for jump
-        }
-    
-        // Check if down arrow key is pressed and player is in mid-air
-        if (down.isDown && !player.body.touching.down) {
-            verticalVelocity = 500; // Set positive vertical velocity for downward charge
+        else {
+            player.setVelocityX(0);
+            //this stops the animation then reverts to the first frame in the sprite sheet when set true, false just ends it on that frame
+            scene.player.anims.stop('walk',true);
         }
 
+        // Check if the player can move vertically
+        if (up.isDown && player.body.touching.down) {
+            player.setVelocityY(-330);
+        }
+        if (down.isDown && !player.body.touching.down) {
+            player.setVelocityY(500); // Charge downwards while in mid-air
+        }
+
+        // Check if the player has landed after pressing down in mid-air
         if (player.body.touching.down && scene.playerWasInAir && down.isDown) {
             // Trigger screen shake if conditions are met
             screenShakeModule.triggerScreenShake(scene);
             scene.playerWasInAir = false; // Reset flag
         }
-        
-        // Update the flag to track if the player was in the air
 
-        // Apply velocities to the player
-        player.setVelocityX(horizontalVelocity);
-        player.setVelocityY(verticalVelocity);
-    
-        // Play animations based on player's movement state
-        if (horizontalVelocity !== 0 && player.body.touching.down) {
-            scene.player.anims.play('walk', true); // Play walk animation if moving horizontally on the ground
-        } else if (!player.body.touching.down) {
+        // Update the flag to track if the player was in the air
+        if (!player.body.touching.down) {
             scene.playerWasInAir = true;
-            scene.player.anims.play('jump', true); // Play jump animation if player is in mid-air
-        }
-        else {
-            scene.player.anims.stop('walk'); // Stop walk animation if not moving horizontally on the ground
-        } 
-    
-        // Check if any arrow key is pressed
-        if (left.isDown || right.isDown || up.isDown || down.isDown) {
-            // Set playerWasInAir flag to true if player is not touching the ground
-            scene.playerWasInAir = !player.body.touching.down;
         }
     }
+
     // Expose init and handlePlayerMovement functions
     return {
         init: init,
