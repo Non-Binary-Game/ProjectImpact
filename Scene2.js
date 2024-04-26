@@ -15,7 +15,8 @@ var Scene2 = new Phaser.Class({
     preload: function () {
         //passes in scene data to load assets
         loadGlobalAssets(this);
-        
+        //will move to global assets loader soon...
+        this.load.spritesheet('enemyType1','assets/basilisk.png',{ frameWidth: 32, frameHeight: 32 });
 
     },
 
@@ -37,7 +38,8 @@ var Scene2 = new Phaser.Class({
         platforms(this, 660, 0)
         platforms(this, 800, 200)
         
-   
+        const basilisk = new enemyType1(this,100,100);
+        
         //this.player.setCollideWorldBounds(true);
     
         this.cam = this.cameras.main;

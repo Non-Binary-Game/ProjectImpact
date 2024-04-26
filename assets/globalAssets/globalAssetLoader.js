@@ -13,7 +13,7 @@ function loadGlobalAssets(scene){
    //physical terrain
    scene.load.image('terrain', 'assets/terrain.png');
    scene.load.image('background', 'assets/BG2.png');
-   
+
    //scene.load.image('player', 'assets/spaeatepngfiles/player/walk/playerwalk1.png');
    scene.load.spritesheet('player', 'assets/playerspriteSheet/wholeSheet.png', { frameWidth: 32, frameHeight: 32 });
 
