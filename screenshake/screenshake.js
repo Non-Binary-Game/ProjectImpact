@@ -18,6 +18,8 @@ var screenShakeModule = (function() {
         // Check if the screen shake can occur based on cooldown and random chance
         if (canShakeScreen(scene)) {
             scene.cameras.main.shake(250, .01); // Trigger screen shake
+            //groundSlamSound = scene.sound.add('groundSlam', { loop: false, volume: 0.3 });
+            //groundSlamSound.play();
             lastShakeTime = scene.time.now; // Update the time of the last screen shake
         }
     }

@@ -32,10 +32,28 @@ var movementModule = (function() {
                     scene.player.setFlip(false, false);
                     scene.player.anims.play('walk', true);
         }
+<<<<<<< Updated upstream
         else {
             player.setVelocityX(0);
             //this stops the animation then reverts to the first frame in the sprite sheet when set true, false just ends it on that frame
             scene.player.anims.stop('walk',true);
+=======
+        // Check if right arrow key is pressed
+        if (right.isDown) {
+            horizontalVelocity = 160; // Set positive horizontal velocity for right movement
+            scene.player.setFlipX(false); // Reset player sprite flip
+        }
+    
+        // Check if up arrow key is pressed and player is on the ground
+        if (up.isDown && player.body.touching.down) {
+            verticalVelocity = -300; // Set negative vertical velocity for jump
+            jumpSound = scene.sound.add('jump', { loop: false, volume: 0.6 });
+        }
+    
+        // Check if down arrow key is pressed and player is in mid-air
+        if (down.isDown && !player.body.touching.down) {
+            verticalVelocity = 500; // Set positive vertical velocity for downward charge
+>>>>>>> Stashed changes
         }
 
         // Check if the player can move vertically

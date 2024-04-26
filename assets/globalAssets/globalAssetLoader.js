@@ -10,6 +10,8 @@ function loadGlobalAssets(scene){
    //music assets
    //loads audio assets
    scene.load.audio('bgMusic','assets/globalAssets/sounds/global_sounds/theme_melon_impact.mp3');
+   scene.load.audio('groundSlam','assets/globalAssets/sounds/player_sounds/ground slam 2.mp3');
+   scene.load.audio('jump','assets/globalAssets/sounds/player_sounds/jump.mp3');
    //physical terrain
    scene.load.image('terrain', 'assets/terrain.png');
    scene.load.image('background', 'assets/BG2.png');
