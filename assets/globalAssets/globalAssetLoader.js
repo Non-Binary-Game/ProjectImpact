@@ -12,7 +12,7 @@ function loadGlobalAssets(scene){
    scene.load.audio('bgMusic','assets/globalAssets/sounds/global_sounds/theme_melon_impact.mp3');
    //physical terrain
    scene.load.image('terrain', 'assets/terrain.png');
-   scene.load.image('enemy', 'assets/enemy_temp.png');
+   scene.load.image('enemy', 'assets/enemy.png');
    scene.load.image('background', 'assets/BG2.png');
    
    //scene.load.image('player', 'assets/spaeatepngfiles/player/walk/playerwalk1.png');
